@@ -21,7 +21,7 @@ object _6_Errors extends App with BombDeactivator {
 }
 
 class Bomb(explote: Boolean) {
-  def explotion(): Int = if(!explote) 0 else throw NullPointerException
+  def explotion(): Int = if(!explote) 0 else throw new NullPointerException()
 }
 
 trait BombDeactivator {
@@ -32,5 +32,5 @@ trait BombDeactivator {
 
   def tryingBetter[T](thunk: => T): Try[T] = Try { thunk }
 
-  def eitherIsRight[T](thunk: => T): Either[Exception, Int] = allCatch.either(thunk)
+  def eitherIsRight[T](thunk: => T): Either[Throwable, T] = allCatch.either(thunk)
 }
