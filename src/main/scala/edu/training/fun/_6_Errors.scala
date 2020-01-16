@@ -1,5 +1,4 @@
 package edu.training.fun
-import org.omg.CORBA.portable.UnknownException
 
 import scala.util.Try
 import scala.util.control.Exception._
@@ -22,7 +21,7 @@ object _6_Errors extends App with BombDeactivator {
 }
 
 class Bomb(explote: Boolean) {
-  def explotion(): Int = if(!explote) 0 else throw UnknownException
+  def explotion(): Int = if(!explote) 0 else throw NullPointerException
 }
 
 trait BombDeactivator {
