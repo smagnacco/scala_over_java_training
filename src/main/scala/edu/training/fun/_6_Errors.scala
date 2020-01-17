@@ -1,7 +1,8 @@
 package edu.training.fun
 
-import scala.util.Try
+import scala.util.{Failure, Success, Try}
 import scala.util.control.Exception._
+
 
 object _6_Errors extends App with BombDeactivator {
 
@@ -9,14 +10,19 @@ object _6_Errors extends App with BombDeactivator {
 
   pray(bomb.explotion())
 
-  // try
-  val tryingResult = trying(bomb.explotion())
+
+  val tryingResult = try {
+    pray(bomb.explotion())
+  } catch {
+    case e: Exception => println(s"ERROR $e")
+      0
+  }
 
   // Try
-  val betterTryingResult = tryingBetter(bomb.explotion())
+  val betterTryingResult: Try[Int] = tryingBetter(bomb.explotion())
 
   //Either
-  eitherIsRight(bomb.explotion())
+  val another: Either[Int, Int] = eitherIsRight(bomb.explotion())
 
 }
 
@@ -28,9 +34,12 @@ trait BombDeactivator {
 
   def pray[T](thunk: => T): T = thunk
 
-  def trying[T](thunk: => T): T = thunk
-
   def tryingBetter[T](thunk: => T): Try[T] = Try { thunk }
 
-  def eitherIsRight[T](thunk: => T): Either[Throwable, T] = allCatch.either(thunk)
+  def eitherIsRight[T](thunk: => T): Either[Int, T] = Try {
+    thunk
+  } match {
+    case Failure(exception) => println(exception); Left(0)
+    case Success(r) => Right(r)
+  }
 }

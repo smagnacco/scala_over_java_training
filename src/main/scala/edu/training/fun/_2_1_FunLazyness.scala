@@ -2,7 +2,10 @@ package edu.training.fun
 
 object _2_1_FunLazyness extends App {
 
-  def identity(x: Int): Int = x
+  def identity(x: Int): Int = {
+    println("Manu no confia")
+    x
+  }
 
   def method_that_receives_a_lazy_expression(thunk: => Int, callThunk: Boolean): Unit =
     if (callThunk) {

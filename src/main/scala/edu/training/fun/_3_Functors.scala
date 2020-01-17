@@ -7,7 +7,7 @@ object _3_Functors extends App with GatoAPerrorTransformer {
   val stringEmptyList: List[String] = List[String]()
 
   // String List Type Constructor
-  val listaDeGatos = List(Gato("Tom"), Gato("Mauri"), Gato("Suller"))
+  val listaDeGatos: List[Gato] = List(Gato("Tom"), Gato("Mauri"), Gato("Suller"))
 
   listaDeGatos.foreach{ animalito => println(s"${animalito.nombre}: ${animalito.haceTuGracia}") }
 

@@ -19,6 +19,10 @@ object _1_Functions extends App {
 
   def curry_style_method(a: Int)(b:Int) = a + b
 
+  val partial: Int => Int = curry_style_method(10) _
+
+  val result: Int = partial(20)
+
   println( s"""Llamando a un metodo: def sum(10, 10 ): ${sum(10, 10)}
 
   Llamando como expresiones es similar a llamar a un metodo

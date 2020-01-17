@@ -12,16 +12,16 @@ object Expressions extends Utils {
 
   val y: Int = if (isSmallerThan(ten)) 20 else 10
 
-  val z = (x + y) + (x + y)
+  val z: Int = (x + y) + (x + y)
 
-  val thunk = {
+  val thunk: Int = {
     val m = z + z
     m + x + y
   }
 
-  val _for_como_expression = for {
-    i <- Range(0, 3)
-    j <- Range(0, 3)
+  val _for_como_expression: Set[(Int, Int)] = for {
+    i <- Set(0,1,2,3)
+    j <- List(0,1,2,3)
     if i != 0
   } yield {
     (i, j)
@@ -35,7 +35,7 @@ object Expressions extends Utils {
     println(s"El valor de la expression del for es : ${_for_como_expression}")
     println(s"El valor de la expression del for es : ${_for_como_expression}")
     println(s"El valor de la expression del for es : ${multiplicationExpression(2)}")
-    println(s"El valor de la expression del for es : ${multiplicationExpression _}")
+    println(s"El valor de la expression del for es : ${multiplicationExpression}")
   }
 
 }

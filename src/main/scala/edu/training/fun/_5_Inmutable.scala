@@ -51,6 +51,7 @@ trait HablarSinPolimorfismos {
     filosofo match {
       case Heraclito(nombre, _) => println(s"Parmenides polimorfismo para que. $nombre dixit")
       case Parmenides(nombre, _) => println(s"Heraclito polimorfismo para que. $nombre dixit")
+      case a => println(s"esto no debería pasar: $a")
     }
   }
 }
