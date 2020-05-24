@@ -6,10 +6,10 @@ import scala.util.control.Exception._
 
 object _6_Errors extends App with BombDeactivator {
 
-  val bomb = new Bomb(false)
+  val bomb = new Bomb(true)
 
-  pray(bomb.explotion())
 
+ // pray(bomb.explotion())
 
   val tryingResult = try {
     pray(bomb.explotion())
@@ -22,8 +22,9 @@ object _6_Errors extends App with BombDeactivator {
   val betterTryingResult: Try[Int] = tryingBetter(bomb.explotion())
 
   //Either
-  val another: Either[Int, Int] = eitherIsRight(bomb.explotion())
+  val another: Either[Throwable, Int] = eitherIsRight(bomb.explotion())
 
+ val m: Either[Throwable, Int] = allCatch.either("42a".toInt)
 }
 
 class Bomb(explote: Boolean) {
@@ -32,14 +33,15 @@ class Bomb(explote: Boolean) {
 
 trait BombDeactivator {
 
+
   def pray[T](thunk: => T): T = thunk
 
   def tryingBetter[T](thunk: => T): Try[T] = Try { thunk }
 
-  def eitherIsRight[T](thunk: => T): Either[Int, T] = Try {
+  def eitherIsRight[T](thunk: => T): Either[Throwable, T] = Try {
     thunk
   } match {
-    case Failure(exception) => println(exception); Left(0)
+    case Failure(exception) => println(exception); Left(exception)
     case Success(r) => Right(r)
   }
 }

@@ -13,7 +13,7 @@ object _3_Functors extends App with GatoAPerrorTransformer {
 
   //operacion map
 
-  val resultList = listaDeGatos.map(gato => hacetePerro(gato))
+  val resultList: List[Perro] = listaDeGatos.map(gato => hacetePerro(gato))
 
   resultList.foreach{ animalito => println(s"${animalito.nombre}: ${animalito.haceTuGracia}") }  //improvement DRY
 

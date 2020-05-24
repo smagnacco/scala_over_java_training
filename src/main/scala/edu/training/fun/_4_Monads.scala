@@ -5,7 +5,6 @@ package edu.training.fun
  */
 object _4_Monads extends App {
 
-
   val stringList: List[String] = List("monoids","in","the", "category", "of", "endofunctors", "wtf!")
 
   val intList: List[Int] = List(1, 1, 2, 3, 4, 4, 5)

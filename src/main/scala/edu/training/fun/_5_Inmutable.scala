@@ -1,6 +1,6 @@
 package edu.training.fun
 
-import edu.training.fun._5_Inmutable.{Filosofo, Heraclito, Parmenides, heraclito}
+import edu.training.fun._5_Inmutable.{Filosofo, Heraclito, Parmenides}
 
 
 object _5_Inmutable extends App with DejenHablar with HablarSinPolimorfismos {
@@ -34,6 +34,8 @@ object _5_Inmutable extends App with DejenHablar with HablarSinPolimorfismos {
   hablablaSinPolimorfismos(heraclito)
 
   hablablaSinPolimorfismos(parmenides)
+
+  hablablaSinPolimorfismos(10)
 
 }
 
